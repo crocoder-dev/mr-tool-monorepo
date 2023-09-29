@@ -21,8 +21,7 @@ export function fuzzySearch(gitIdentities: Pick<GitIdentities, 'id' | 'name' | '
     useExtendedSearch: true,
   });
 
-
-  const memberMap = new Map<number, {
+  const gitIdentitiesToMembers = new Map<number, {
     memberId: number,
     score: number,
   }>();
@@ -37,17 +36,16 @@ export function fuzzySearch(gitIdentities: Pick<GitIdentities, 'id' | 'name' | '
       const { score, refIndex } = r;
 
       const gitIdentity = gitIdentities.at(refIndex);
-
-      if (gitIdentity && memberMap.has(gitIdentity.id) && score) {
-        const currentScore = memberMap.get(gitIdentity.id)?.score;
+      if (gitIdentity && gitIdentitiesToMembers.has(gitIdentity.id) && score) {
+        const currentScore = gitIdentitiesToMembers.get(gitIdentity.id)?.score;
         if (currentScore && currentScore > score) {
-          memberMap.set(gitIdentity.id, {
+          gitIdentitiesToMembers.set(gitIdentity.id, {
             memberId: member.id,
             score,
           });
         }
       } else if (gitIdentity && score) {
-        memberMap.set(gitIdentity.id, {
+        gitIdentitiesToMembers.set(gitIdentity.id, {
           memberId: member.id,
           score,
         });
@@ -56,15 +54,15 @@ export function fuzzySearch(gitIdentities: Pick<GitIdentities, 'id' | 'name' | '
   }
 
   const result: Map<number, number[]> = new Map();
-  memberMap.forEach((value, key) => {
+  gitIdentitiesToMembers.forEach((value, gitIdentityId) => {
     if (result.has(value.memberId)) {
       const current = result.get(value.memberId);
       if (current) {
-        current.push(key);
+        current.push(gitIdentityId);
         current.sort();
       }
     } else {
-      result.set(value.memberId, [key]);
+      result.set(value.memberId, [gitIdentityId]);
     }
   });
   return result;
