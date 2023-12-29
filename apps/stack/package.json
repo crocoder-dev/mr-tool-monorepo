@@ -25,7 +25,7 @@
     "@acme/transform-functions": "*",
     "@acme/transform-schema": "*",
     "@aws-sdk/client-sqs": "^3.470.0",
-    "@clerk/clerk-sdk-node": "^4.12.5",
+    "@clerk/clerk-sdk-node": "^4.13.4",
     "@tsconfig/node16": "^16.1.1",
     "@upstash/redis": "^1.25.1",
     "aws-cdk-lib": "2.84.0",
