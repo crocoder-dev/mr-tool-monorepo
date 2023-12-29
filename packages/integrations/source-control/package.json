@@ -16,7 +16,7 @@
     "@gitbeaker/rest": "^39.19.0",
     "@octokit/rest": "^20.0.2",
     "@types/parse-link-header": "^2.0.3",
-    "fuse.js": "^6.6.2",
+    "fuse.js": "^7.0.0",
     "parse-link-header": "^2.0.0"
   },
   "devDependencies": {
