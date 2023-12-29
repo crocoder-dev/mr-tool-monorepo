@@ -34,7 +34,7 @@
     "typescript": "5.2.2",
     "zod": "3.22.4"
   },
-  "packageManager": "npm@9.8.1",
+  "packageManager": "npm@10.2.5",
   "workspaces": [
     "apps/*",
     "packages/*",
