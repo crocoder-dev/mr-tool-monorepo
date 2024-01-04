@@ -30,7 +30,7 @@
     "eslint": "8.55.0",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.3.0",
-    "turbo": "1.10.15",
+    "turbo": "1.11.3",
     "typescript": "5.2.2",
     "zod": "3.22.4"
   },
